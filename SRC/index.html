@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <script >
+            var timerStart = Date.now();
+  </script>
+</head>
+<style>
+*{
+  
+}
+.images{
+display:none;
+width:100px;
+height:100px;
+float:left;
+}
+#description
+{
+   border-style:solid;
+   border-width:2px;
+   border-color:#000000;
+ -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#instructions
+{
+   border-style:dashed;
+   border-width:2px;
+   background-color:rgba(41,52,50,0.8);
+   border-color:#000000;
+ -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+float:right;
+}
+#myCanvas
+{
+ 
+	margin-left:0px;
+  position: absolute;
+     background-color:rgba(255,0,0,1);
+
+	
+}
+#bgCanvas{
+position: absolute;
+
+}
+</style>
+<div>
+<canvas  id="bgCanvas"></canvas>
+<canvas  id="myCanvas" ></canvas>
+<!--
+<div id = "instructions">
+<h1><u>How to play</u><br></h1>
+<h2>Move using W A S D</h2>
+<h2>Click enemyes to cast spell, change spells using 1,2,3...</h2>
+<h2>Spell Book<br>
+1.Atack(Singe,Short-Range,Knockback)<br>
+2.Burn(Aoe,Inf-Range)<br>
+3.Lightning(Single,Inf-Range)<br>
+4.Ruffle(Aoe,Short-Range,Throw in air,Knockback)<br>
+5.Freeze(Aoe,Inf-Range,Stun)<br>
+6.Chain Lightning(Multiple,Inf-Range)(works best if enemyes are not overlayed)<br>
+7.Drain Life(Single,Inf-Range)<br>
+8.Mass Drain Life(Multiple,Inf-Range)(works best if enemyes are not overlayed)<br>
+</h2>
+</div>
+</div>
+<div id = "description"
+<h1>Mob Temple Version 1.0 preAlpha<br></h1>
+<h2>Wait for the resources to load(this can take up to 1 min if you are not from Africa)<br></h2>
+<h2>Current version:<br>
+    -2 mobs(12 more in work)<br>
+    -8 spells<br>
+    -Stun,Throw in air, and basic Knockback mechanics<br>
+    -paricle system<br>
+    Known Bugs:<br>
+    -colision between monsters(must be reimplemented)<br>
+    -if most of the monsters die and you use aoe spell it will crash<br>
+    -particles, and entityes overload memory<br>
+    -not all spells cause damage(easy fix)<br>
+   If you find any other bugs please tell me.
+</h2>
+-->
+</div>
+<img id="Player" class="images"src ="Images/Player.png">
+<img id="PlayerA" class="images"src ="Images/PlayerAtack.png">
+
+
+
+<img id="ShockWave" class="images" src = "Images/DummyImages/ShockWave.png">
+<img id="Meteorite" class="images" src = "Images/DummyImages/Meteorite.png">
+<img id="Boulder" class="images" src = "Images/DummyImages/Boulder.png">
+<img id="HealFlag" class="images" src = "Images/DummyImages/HealFlag.png">
+<img id="WarHealFlag" class="images" src = "Images/DummyImages/WarHealFlag.png">
+<img id="VenomBomb" class="images" src = "Images/DummyImages/VenomBomb.png">
+
+<img id="InfoBox" class="images" src = "Images/GUI/InfoBox.png">
+<img id="CharMenu" class="images" src = "Images/GUI/CharacterMenu.png">
+
+<img id="DoorLeft" class="images" src = "Images/GUI/DoorLeft.png">
+<img id="DoorRight" class="images" src = "Images/GUI/DoorRight.png">
+<img id="MenuBG" class="images" src = "Images/GUI/MenuBG.png">
+<img id="Logo" class="images" src = "Images/GUI/Logo.png">
+<img id="RaffleCover" class="images" src = "Images/GUI/RaffleCover.png">
+<img id="RaffleBox" class="images" src = "Images/GUI/RaffleBox.png">
+<img id="Blades" class="images" src = "Images/GUI/Blades.png">
+
+<img id="WarBtn" class="images" src = "Images/GUI/WarriorBtn.png">
+<img id="MageBtn" class="images" src = "Images/GUI/MageBtn.png">
+<img id="RollBtn" class="images" src = "Images/GUI/RollBtn.png">
+<img id="CloseBtn" class="images" src = "Images/GUI/CloseBtn.png">
+<img id="BreakBG" class="images" src ="Images/GUI/BreakBG.png">
+<img id="CursorSps" class="images" src ="Images/GUI/CursorSps.png">
+<img id="ButtonSps" class="images" src ="Images/GUI/ButtonSps.png">
+
+<img id="BasicItem" class="images" src = "Images/Icons/BasicItem.png">
+
+<img id="ClapIcon" class="images" src = "Images/Icons/ClapIcon.png">
+<img id="HealTotemIcon" class="images" src = "Images/Icons/HealTotemIcon.png">
+<img id="ShockWaveIcon" class="images" src = "Images/Icons/ShockWaveIcon.png">
+<img id="SlayIcon" class="images" src = "Images/Icons/SlayIcon.png">
+
+
+
+<img id="ThunderIcon" class="images" src = "Images/Icons/ThunderIcon.png">
+<img id="FireballIcon" class="images" src = "Images/Icons/FireballIcon.png">
+<img id="FreezeIcon" class="images" src = "Images/Icons/FreezeIcon.png">
+<img id="DrainLifeIcon" class="images" src = "Images/Icons/DrainLifeIcon.png">
+
+<img id="BladeIconSps" class="images" src = "Images/Icons/BladeIconSps.png">
+
+<!--BosssSpriteSheets-->
+<img id="GorillaSps" class="images" src = "Images/Bosses/GorillaSps.png">
+<img id="BerserkStances" class="images" src = "Images/Bosses/BerserkStances.png">
+<img id="SpiderMotherSps" class="images" src = "Images/Bosses/SpiderMotherSps.png">
+<img id="HydraBody" class="images" src = "Images/Bosses/HydraBody.png">
+<img id="HydraHead" class="images" src = "Images/Bosses/HydraHead.png">
+
+<img id="Bg" class="images"src ="Images/BackGround.png">
+
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="GlobalVariabiles.js"></script>
+<script src="Functions.js"></script>
+<script src="Color.js"></script>
+<script src="Chunck.js"></script>
+<script src="Particle2.js"></script>
+<script src="ParticleGen2.js"></script>
+
+
+<script src="Orb.js"></script>
+<script src="FadingText.js"></script>
+<!--Buff Scripts-->
+<script src="Buffs/Buff.js"></script>
+<script src="Buffs/Knocked.js"></script>
+<script src="Buffs/Thrown.js"></script>
+<script src="Buffs/Frostbite.js"></script>
+<script src="Buffs/Burn.js"></script>
+<script src="Buffs/Healed.js"></script>
+<script src="Buffs/Frozen.js"></script>
+<script src="Buffs/Haste.js"></script>
+<script src="Buffs/Jumping.js"></script>
+<script src="Buffs/Poison.js"></script>
+
+<!--Buff Scripts End-->
+
+<!--Projectile Script-->
+<script src="Projectile/Projectile.js"></script>
+<script src="Projectile/Arrow.js"></script>
+<script src="Projectile/Bomb.js"></script>
+<script src="Projectile/WebBomb.js"></script>
+<script src="Projectile/AcidBomb.js"></script>
+<script src="Projectile/DeathCloud.js"></script>
+<script src="Projectile/SpiderCut.js"></script>
+<script src="Projectile/IceSwirl.js"></script>
+<script src="Projectile/FireSwirl.js"></script>
+<script src="Projectile/VenomCloud.js"></script>
+<script src="Projectile/FireCloud.js"></script>
+<script src="Projectile/IceCloud.js"></script>
+<script src="Projectile/FireMine.js"></script>
+<script src="Projectile/ShockBomb.js"></script>
+
+<script src="Projectile/ShockWave.js"></script>
+<script src="Projectile/Thunder.js"></script>
+<script src="Projectile/Meteorite.js"></script>
+<script src="Projectile/FreezingStorm.js"></script>
+<script src="Projectile/Cut.js"></script>
+<script src="Projectile/DrainLife.js"></script>
+<script src="Projectile/HealFlag.js"></script>
+<script src="Projectile/Clap.js"></script>
+<!--Projectile Script End-->
+
+<script src="Dummy.js"></script>
+<script src="Item.js"></script>
+
+
+
+
+<script src="PlayerSkills.js"></script>
+<script src="Player.js"></script>
+
+<script src ="GUI/Label.js" type="text/javascript"></script>
+<script src ="GUI/ShopButton.js" type="text/javascript"></script>
+<script src ="GUI/IconBox.js" type="text/javascript"></script>
+<script src ="GUI/ShopMenu.js" type="text/javascript"></script>
+
+<!--Mob Scripts-->
+<script src="Mobs/MobRoot.js"></script>
+
+<script src="Mobs/Baboo.js"></script>
+<script src="Mobs/ArmoredBaboo.js"></script>
+<script src="Mobs/WarriorBaboo.js"></script>
+<script src="Mobs/ChampionBaboo.js"></script>
+
+<script src="Mobs/Spider.js"></script>
+<script src="Mobs/SpiderThreader.js"></script>
+<script src="Mobs/SpiderChemist.js"></script>
+<script src="Mobs/SpiderDeathfang.js"></script>
+
+<script src="Mobs/Lizzard.js"></script>
+<script src="Mobs/Basilisk.js"></script>
+<script src="Mobs/BasiliskFighter.js"></script>
+<script src="Mobs/BasiliskComander.js"></script>
+
+<script src="Mobs/Bird.js"></script>
+<script src="Mobs/FireBird.js"></script>
+<script src="Mobs/Harpy.js"></script>
+<script src="Mobs/HarpyMage.js"></script>
+<!--Mob Scripts End-->
+
+<script src="MobSpawner.js"></script>
+<script src="GUI/SkillText.js"></script>
+<script src="Sprites.js"></script>
+<script src="MobList.js"></script>
+<script src="WaveList.js"></script>
+<script src="GUI/InfoBox.js"></script>
+<script src="GUI/Panel.js"></script>
+<script src="GUI/Button.js"></script>
+<script src="GUI/BtnFunctions.js"></script>
+<script src="GUI/Raffle.js"></script>
+<script src="GUI/Door.js"></script>
+<script src="GUI/FadingElement.js"></script>
+<script src="GUI/MenuLayout.js"></script>
+<script src="BossScript/BossMechanics.js"></script>
+<script src="BossScript/Gorilla.js"></script>
+<script src="BossScript/SpiderMother.js"></script>
+<script src="BossScript/Hydra.js"></script>
+
+
+
+
+
+
+<script src="Main.js"></script>
+
+ <script >
+            console.log((Date.now()-timerStart)/1000);
+  </script>
+
+</html>
+
+			
+
