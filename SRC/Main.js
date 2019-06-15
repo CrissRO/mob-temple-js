@@ -1,6 +1,9 @@
 $(function(){
-	$('#Bg').on('load',function(){
+	
+	
+	
 		//$Canvas.css('marginLeft') = "100px";
+	
 	var CanvasLOffset = parseInt($Canvas.css('marginLeft'));
 	var CanvasTOffset = parseInt($Canvas.css('marginTop'));
 
@@ -41,6 +44,7 @@ $(function(){
 	{
 		if(!inGame)
 		{
+			
 			if(Mouse.clicked)
 			{	
 				if(LogoElem.alpha==0)
@@ -195,7 +199,7 @@ $(function(){
     	timestep=0,
     	gameFramerate=1000/30,
     	start = Date.now();	
-var sum=0;
+	var sum=0;
     GameLoop();
     	
     function GameLoop(){
@@ -205,7 +209,9 @@ var sum=0;
 
 	    if(!document["hidden"])
 	    {
-	    	requestAnimationFrame(GameLoop,canvas);
+
+			requestAnimationFrame(GameLoop,canvas);
+			
 	    	var current = Date.now(),
 		  	elapsed = current - start;
 
@@ -317,9 +323,10 @@ var sum=0;
 	{
 
 	case "Game":
-	if(!initGame){Initialize();
-	
-}
+		if(!initGame){
+			
+			Initialize();
+		}
 		//WeaponInfo.content = c.item.description;
 
 		
@@ -381,6 +388,7 @@ var sum=0;
 
 			}
 		
+		
 		c.update();
 
 			
@@ -439,10 +447,10 @@ var sum=0;
 	
 	break;
 	case "CharMenu":
-	Mouse.hMod=0;
-	CM.update();
-
-	break;
+	
+		Mouse.hMod=0;
+		CM.update();
+		break;
 
 	}
 
@@ -461,5 +469,5 @@ var sum=0;
 	
 
 	}
-	})
+	
 });

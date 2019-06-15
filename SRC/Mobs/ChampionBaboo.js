@@ -25,7 +25,7 @@ ChampionBaboo.prototype.throw = function()
 
 ChampionBaboo.prototype.haste = function()
 {
-	this.buffArray.push(new Haste(this,20,10));
+	this.buffArray.push(new Haste(this,100,3));
 
 }
 

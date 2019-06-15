@@ -40,7 +40,7 @@ var Hydra =
 
 	breathFire:function()
 	{
-		var p = new ParticleGen(this.HeadX[1]+this.x,
+		var p = new ParticleGen2(this.HeadX[1]+this.x,
 								this.HeadY[1]+this.y,
 								40,40,
 								15,
@@ -60,7 +60,7 @@ var Hydra =
 
 	breathIce:function()
 	{
-		var p = new ParticleGen(this.HeadX[0]+this.x,
+		var p = new ParticleGen2(this.HeadX[0]+this.x,
 								this.HeadY[0]+this.y,
 								40,40,
 								15,
@@ -91,7 +91,7 @@ var Hydra =
 			Dummy.dy*=-1;
 			Dummy.angle =Math.atan2(Dummy.dy,Dummy.dx);
 		}
-		var p = new ParticleGen(Dummy.x,
+		var p = new ParticleGen2(Dummy.x,
 								Dummy.y,
 								20,20,
 								15,

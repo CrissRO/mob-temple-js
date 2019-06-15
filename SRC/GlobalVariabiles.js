@@ -5,7 +5,7 @@ var canvas = document.getElementById("myCanvas");
 var $Canvas = $('#myCanvas');
 
 var ctx = canvas.getContext("2d");
-var WindowScale =1.1;//1.57 for 1920x1080;
+var WindowScale =1.25;//1.57 for 1920x1080;
 var PlayerClass = "Mage";
 var CurrentScene = "CharMenu";
 bgCanvas.width=canvas.width = 800*WindowScale;
@@ -50,7 +50,7 @@ var CanvasObj =
 		
 	};
 
-var CurrentMenuItem = "Menu";
+var CurrentMenuItem = "Raffle";
 /*Mouse*/
 	var Mouse =
 	{
